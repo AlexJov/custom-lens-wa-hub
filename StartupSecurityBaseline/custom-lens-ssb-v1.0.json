@@ -1,0 +1,322 @@
+{
+    "schemaVersion": "2021-11-01",
+    "_version":"1.0",
+    "_release_date":"2023-01-05",
+    "_release_note":"Init version",
+    "_teams":{
+       "_authors":[
+          {
+            "name":"Aleksandra Jovovic, Startups Solutions Architect"
+          },
+          {
+            "name":"Max Berta, Startups Solutions Architect"
+          }
+       ],
+       "_tech_reviewers":[
+          {
+             "name":"TBD"
+          }
+       ]
+    },
+    "name": "AWS Startup Security Baseline (AWS SSB)",
+    "description": "The Amazon Web Services (AWS) Startup Security Baseline (SSB) is a set of controls that create a minimum foundation for businesses to build securely on AWS without decreasing their agility. The controls in this guide are designed with early startups in mind, mitigating the most common security risks without requiring significant effort.",
+    "pillars": [
+        {
+            "id": "ACCT",
+            "name": "Securing your account",
+            "questions": [
+                {
+                    "id": "ACCT_01",
+                    "title": "ACCT.01 Set account-level contacts to valid email distribution lists",
+                    "description": "When setting up primary and alternate contacts for your AWS account, use an email distribution list instead of an individual email address. Using an email distribution list makes sure that ownership and reachability are preserved as individuals in your organization come and go. Set alternate contacts for billing, operations, and security notifications, and use appropriate email distribution lists accordingly. AWS uses these email addresses to contact you, so it is important you retain access to them.",
+                    "choices": [
+                        {
+                            "id": "ACCT_01_1",
+                            "title": "AWS accounts are named intuitively",
+                            "helpfulResource": {
+                                "displayText": "Set account-level contacts to valid email distribution lists",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Sign in to the Account Settings page in the Billing and Cost Management console",
+                                "url": "https://console.aws.amazon.com/billing/home?#/account"
+                            }
+                        },
+                        {
+                            "id": "ACCT_01_2",
+                            "title": "Root user password is set and known",
+                            "helpfulResource": {
+                                "displayText": "Set account-level contacts to valid email distribution lists",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Sign in to the Account Settings page in the Billing and Cost Management console",
+                                "url": "https://console.aws.amazon.com/billing/home?#/account"
+                            }
+                        },
+                        {
+                            "id": "ACCT_01_3",
+                            "title": "Root user email address is set and reachable",
+                            "helpfulResource": {
+                                "displayText": "Set account-level contacts to valid email distribution lists",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Sign in to the Account Settings page in the Billing and Cost Management console",
+                                "url": "https://console.aws.amazon.com/billing/home?#/account"
+                            }
+                        },
+                        {
+                            "id": "ACCT_01_4",
+                            "title": "Contact information is up-to-date",
+                            "helpfulResource": {
+                                "displayText": "Set account-level contacts to valid email distribution lists",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "On the Account Settings page, under Contact Information, choose Edit.",
+                                "url": "https://console.aws.amazon.com/billing/home?#/account"
+                            }
+                        },
+                        {
+                            "id": "ACCT_01_5",
+                            "title": "Alternative contacts information is up-to-date",
+                            "helpfulResource": {
+                                "displayText": "Set account-level contacts to valid email distribution lists",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "On the Account Settings page, under Alternate Contacts, choose Edit.",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-01.html"
+                            }
+                        }
+                    ],
+                    "riskRules": [
+                        {
+                            "condition": "ACCT_01_1 && ACCT_01_2 && ACCT_01_3 && ACCT_01_4 && ACCT_01_5",
+                            "risk": "NO_RISK"
+                        },
+                        {
+                            "condition": "(!ACCT_01_1) || (!ACCT_01_2) || (!ACCT_01_4)",
+                            "risk": "HIGH_RISK"
+                        },
+                        {
+                            "condition": "(!ACCT_01_5)",
+                            "risk": "MEDIUM_RISK"
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCT_02",
+                    "title": "ACCT.02 Restrict use of the root user",
+                    "description": "The root user is created when you sign up for an AWS account, and this user has full ownership privileges and permissions over the account that cannot be changed. Only use the root user for the specific tasks that require it. For more information, see Tasks that require root user credentials (AWS General Reference). Perform all other actions in your account by using IAM users or federated users with IAM roles.",
+                    "choices": [
+                        {
+                            "id": "ACCT_02_1",
+                            "title": "Multi-factor authentication (MFA) for the root user is required",
+                            "helpfulResource": {
+                                "displayText": "ACCT_02 – Restrict use of the root user",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-02.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Enabling MFA devices for users in AWS",
+                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html"
+                            }
+                        },
+                        {
+                            "id": "ACCT_02_2",
+                            "title": "IAM users have been created for this account",
+                            "helpfulResource": {
+                                "displayText": "ACCT_02 – Restrict use of the root user",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-02.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Create an administrative user",
+                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-set-up.html#create-an-admin"
+                            }
+                        }
+                    ],
+                    "riskRules": [
+                        {
+                            "condition": "ACCT_02_1 && ACCT_02_2",
+                            "risk": "NO_RISK"
+                        },
+                        {
+                            "condition": "(!ACCT_02_1)",
+                            "risk": "HIGH_RISK"
+                        },
+                        {
+                            "condition": "ACCT_02_2",
+                            "risk": "MEDIUM_RISK"
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCT_03",
+                    "title": "ACCT.03 Configure console access for each user",
+                    "description": "As a baseline, create an IAM user for each person who needs to access the AWS Management Console. Do not share credentials across users.",
+                    "choices": [
+                        {
+                            "id": "ACCT_03_1",
+                            "title": "IAM users are created for each person",
+                            "helpfulResource": {
+                                "displayText": "ACCT.03 Configure console access for each user",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-03.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Create IAM users",
+                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console"
+                            }
+                        },
+                        {
+                            "id": "ACCT_03_2",
+                            "title": "Federated users from a centralized identity provider (IdP) are used",
+                            "helpfulResource": {
+                                "displayText": "ACCT.03 Configure console access for each user",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/acct-03.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "IAM Identity Center documentation",
+                                "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html"
+                            }
+                        }
+                    ],
+                    "riskRules": [
+                        {
+                            "condition": "ACCT_03_1 && ACCT_03_2",
+                            "risk": "NO_RISK"
+                        },
+                        {
+                            "condition": "(!ACCT_03_1)",
+                            "risk": "HIGH_RISK"
+                        },
+                        {
+                            "condition": "(!ACCT_03_2)",
+                            "risk": "MEDIUM_RISK"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "WKLD",
+            "name": "Securing your workloads",
+            "questions": [
+                {
+                    "id": "WKLD_01",
+                    "title": "WKLD.01 Use IAM roles for compute environment permissions",
+                    "description": "In AWS Identity and Access Management (IAM), a role represents a set of permissions that can be assumed by a person or service for a configurable period of time. Using roles eliminates the need to store or manage long-term credentials, significantly reducing the chance of unintended use. Assign an IAM role directly to Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS Fargate tasks and services, AWS Lambda functions, and other AWS compute services whenever supported. Applications that use an AWS SDK and run in these compute environments automatically use the IAM role credentials for authentication.",
+                    "choices": [
+                        {
+                            "id": "WKLD_01_1",
+                            "title": "IAM roles for Amazon EC2 are used",
+                            "helpfulResource": {
+                                "displayText": "WKLD.01 Use IAM roles for compute environment permissions",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/wkld-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "IAM roles for Amazon EC2",
+                                "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html"
+                            }
+                        },
+                        {
+                            "id": "WKLD_01_2",
+                            "title": "IAM roles for tasks are used",
+                            "helpfulResource": {
+                                "displayText": "WKLD.01 Use IAM roles for compute environment permissions",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/wkld-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "IAM roles for tasks",
+                                "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html"
+                            }
+                        },
+                        {
+                            "id": "WKLD_01_3",
+                            "title": "Lambda execution roles are used",
+                            "helpfulResource": {
+                                "displayText": "WKLD.01 Use IAM roles for compute environment permissions",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/wkld-01.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "Lambda execution role",
+                                "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html"
+                            }
+                        }
+                    ],
+                    "riskRules": [
+                        {
+                            "condition": "WKLD_01_1 && WKLD_01_2 && WKLD_01_3",
+                            "risk": "NO_RISK"
+                        },
+                        {
+                            "condition": "(!WKLD_01_1) || (!WKLD_01_2) || (!WKLD_01_3)",
+                            "risk": "HIGH_RISK"
+                        },
+                        {
+                            "condition": "default",
+                            "risk": "MEDIUM_RISK"
+                        }
+                    ]
+                },
+                {
+                    "id": "WKLD_02",
+                    "title": "WKLD.02 Restrict credential usage scope with resource-based policies permissions",
+                    "description": "Policies are objects that can define permissions or specify access conditions. There are two primary types of policies: Identity-based policies are attached to principals and define what the principals permissions in the AWS environment. Resource-based policies are attached to a resource, such as an Amazon Simple Storage Service (Amazon S3) bucket, or virtual private cloud (VPC) endpoint. These policies specify which principals are allowed access, supported actions, and any other conditions that must be met. ",
+                    "choices": [
+                        {
+                            "id": "WKLD_02_1",
+                            "title": "Restrict access to only principals in a specified organization by using the aws:PrincipalOrgID condition.",
+                            "helpfulResource": {
+                                "displayText": "WKLD.02 Restrict credential usage scope with resource-based policies permissions",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/wkld-02.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "aws:PrincipalOrgID",
+                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-principalorgid"
+                            }
+                        },
+                        {
+                            "id": "WKLD_02_2",
+                            "title": "Restrict access to traffic that originates from a VPC or VPC endpoint by using the aws:SourceVpc or aws:SourceVpce condition.",
+                            "helpfulResource": {
+                                "displayText": "WKLD.02 Restrict credential usage scope with resource-based policies permissions",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/wkld-02.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "aws:SourceVpc",
+                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcevpc"
+                            }
+                        },
+                        {
+                            "id": "WKLD_02_3",
+                            "title": "Allow or deny traffic based on the source IP address by using an aws:SourceIp condition.",
+                            "helpfulResource": {
+                                "displayText": "WKLD.02 Restrict credential usage scope with resource-based policies permissions",
+                                "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/wkld-02.html"
+                            },
+                            "improvementPlan": {
+                                "displayText": "aws:SourceIp",
+                                "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceip"
+                            }
+                        }
+                    ],
+                    "riskRules": [
+                        {
+                            "condition": "WKLD_02_1 && WKLD_02_2 && WKLD_02_3",
+                            "risk": "NO_RISK"
+                        },
+                        {
+                            "condition": "(!WKLD_02_1) || (!WKLD_02_2) || (!WKLD_02_3)",
+                            "risk": "HIGH_RISK"
+                        },
+                        {
+                            "condition": "default",
+                            "risk": "MEDIUM_RISK"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
